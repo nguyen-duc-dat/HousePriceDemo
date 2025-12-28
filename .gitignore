@@ -1,0 +1,18 @@
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Môi trường ảo
+venv/
+.venv/
+env/
+
+# Streamlit
+.streamlit/ config.toml (nếu có secrets)
+
+# Hệ điều hành
+.DS_Store
+Thumbs.db
+
+# Dữ liệu (Nếu file quá nặng)
+# kc_house_data.csv
