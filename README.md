@@ -8,16 +8,21 @@
 
 Hệ thống được chia thành 2 module (Tab):
 
-### 1. 📊 Phân tích dữ liệu (Dashboard)
+### 1. Phân tích dữ liệu (Dashboard)
 - Biểu đồ phân bố giá nhà, biểu đồ nhiệt (Heatmap) tương quan đa biến.
 - Phân tích sâu các yếu tố: Vị trí (Zipcode), Chất lượng xây dựng (Grade), Tính mùa vụ (Seasonality)...
 - Trực quan hóa dữ liệu giúp người dùng có cái nhìn toàn cảnh về thị trường.
 
-### 2. 🤖 Ứng dụng Dự đoán (AI App)
-- Giao diện nhập liệu chi tiết 18 thông số (Diện tích, số phòng, năm xây, vị trí...).
-- Tự động định vị tọa độ (Lat/Long) và tra cứu thông tin khu vực.
-- Dự đoán giá trị thực tế của căn nhà theo thời gian thực (Real-time Inference).
+### 2. Dự đoán & Giải thích Cục bộ (Prediction & Local SHAP)
+- Dự đoán: Nhập liệu 18 thông số chi tiết -> Trả về giá trị ước tính thời gian thực.
+- Giải thích (New): Tích hợp biểu đồ thác nước (SHAP Waterfall Plot) ngay sau khi dự đoán.
+   + Trả lời câu hỏi: "Tại sao căn nhà này lại có giá đó?"
+   + Chỉ rõ từng yếu tố (View sông, Diện tích lớn...) đã cộng thêm hay trừ bớt bao nhiêu tiền vào giá gốc.
 
+### 3. Phân tích Toàn cục (Global SHAP Explanation)
+- Cơ chế (New): Sử dụng lý thuyết trò chơi (Game Theory) để phân tích "khẩu vị" của mô hình AI trên toàn bộ thị trường.
+- Biểu đồ Summary: Xếp hạng các yếu tố quan trọng nhất (như grade, lat, sqft_living) ảnh hưởng đến giá nhà.
+- Giúp người dùng hiểu được quy luật chung của thị trường bất động sản.
 ---
 
 ## 🛠️ Công nghệ & Kiến trúc Hệ thống
@@ -86,9 +91,11 @@ HousePriceDemo/
 │   ├── DA.ipynb            # Phân tích khám phá (Data Analysis)
 │   ├── DE.ipynb            # Xử lý dữ liệu với PySpark
 │   └── DS.ipynb            # Huấn luyện mô hình Spark MLlib
-├── pages/                  # Các trang giao diện Web App
-│   ├── 1_📊_Phan_tich_Du_lieu.py
-│   └── 2_🤖_Du_doan_Gia_nha.py
+├── modules/                  # Các trang giao diện Web App
+│   ├── 1_analytics.py
+│   └── 2_explain.py
+│   └── 3_home.py
+│   └── 4_prediction.py
 ├── app.py                  # Trang chủ (Homepage)
 ├── kc_house_data.csv       # Dữ liệu gốc
 ├── zipcode_coords.csv      # Dữ liệu tọa độ (Lookup table)
