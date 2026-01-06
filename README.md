@@ -1,10 +1,10 @@
-# 🏡 Hệ Thống Dự Đoán Giá Nhà King County (Estate Valuation AI)
+# Hệ Thống Dự Đoán Giá Nhà King County (Estate Valuation AI)
 
-Đây là đồ án môn học xây dựng ứng dụng Web giúp định giá bất động sản tại King County (USA). Dự án kết hợp quy trình xử lý dữ liệu lớn (Big Data) và thuật toán **Machine Learning (Random Forest)** để đưa ra dự đoán chính xác.
+Đây là đồ án môn học xây dựng ứng dụng Web định giá bất động sản thông minh tại King County (USA). Dự án không chỉ dừng lại ở việc dự đoán, mà còn tích hợp Explainable AI (XAI) để minh bạch hóa lý do đằng sau mức giá, kết hợp quy trình xử lý dữ liệu lớn (Big Data) và thuật toán Random Forest.
 
 ---
 
-## 🚀 Chức năng chính
+## Chức năng chính
 
 Hệ thống được chia thành 2 module (Tab):
 
