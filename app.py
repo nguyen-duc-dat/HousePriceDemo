@@ -7,6 +7,12 @@ from modules.home import show_home
 from modules.analytics import show_analytics 
 from modules.prediction import show_prediction
 
+# --- 1. THÊM IMPORT MODULE MỚI ---
+from modules.home import show_home
+from modules.analytics import show_analytics 
+from modules.prediction import show_prediction
+from modules.explain import show_explanation
+
 # 1. Cấu hình trang
 st.set_page_config(
     page_title="Estate Valuation AI",
@@ -127,10 +133,11 @@ df = load_data()
 model, zip_map = load_resources()
 
 # 3. MENU ĐIỀU HƯỚNG
-tab1, tab2, tab3 = st.tabs([
+tab1, tab2, tab3, tab4 = st.tabs([
     "TRANG CHỦ", 
     "PHÂN TÍCH", 
-    "DỰ ĐOÁN"
+    "DỰ ĐOÁN",
+    "GIẢI THÍCH"
 ])
 
 # --- TAB 1 ---
@@ -150,3 +157,11 @@ with tab3:
         show_prediction(model, zip_map)
     else:
         st.error("⚠️ Thiếu file Model hoặc Zipcode. Hãy chạy 'train_model.py' trước.")
+
+# --- TAB 4 (MỚI) ---
+with tab4:
+    if model is not None and df is not None:
+        # Gọi hàm từ module explain.py
+        show_explanation(model, df)
+    else:
+        st.warning("⚠️ Cần load đủ Dữ liệu và Model để chạy giải thích.")
